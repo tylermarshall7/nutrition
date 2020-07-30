@@ -15,23 +15,32 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    foods: []
+    foods: [],
+    journal: []
   },
   mutations: {
     setFoods(state, foodData) {
       state.foods = foodData
+    },
+    setJournal(state, journalData) {
+      state.journal.push(journalData)
+      console.log(state.journal);
     }
   },
   actions: {
-    async getNutrients({commit, dispatch}, query) {
-     try {
-      let res = await api.post("search/instant" , query)
-      console.log(res.data.branded)
-      commit("setFoods", res.data.branded)
-     } catch (error) {
-       console.error(error);
-     }
-     
+    async getNutrients({ commit, dispatch }, query) {
+      try {
+        let res = await api.post("search/instant", query)
+        console.log(res.data.branded)
+        commit("setFoods", res.data.branded)
+      } catch (error) {
+        console.error(error);
+      }
+
+    },
+    addToJournal({ commit, dispatch }, foodData) {
+
+      commit("setJournal", foodData)
     }
   },
   modules: {
