@@ -1,9 +1,9 @@
 <template>
-  <div class="journal col-12">
-    <div class="row justify-content-around border rounded shadow-sm my-5">
+  <div class="journal col-5">
+    <div class="row justify-content-between border rounded shadow-sm my-5">
       <h1>{{journalData.brand_name}}</h1>
-      <img class="img-fluid f-height" :src="journalData.photo.thumb" />
       <h1>Calories: {{journalData.nf_calories}}</h1>
+      <img class="img-fluid f-height" :src="journalData.photo.thumb" />
     </div>
   </div>
 </template>
@@ -25,6 +25,6 @@ export default {
 
 <style scoped>
 .f-height {
-  max-height: 100px;
+  max-height: 200px;
 }
 </style>

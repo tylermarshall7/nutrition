@@ -1,47 +1,44 @@
 
 <template>
   <div class="foodList">
-    <input type="text" v-model="food.query">
-    <button @click="getFood"> submit </button>
-    <food v-for="food in foodList" :foodData="food" :key="food.name"/>
-
+    <input type="text" v-model="food.query" />
+    <button @click="getFood">submit</button>
+    <div class="row">
+      <food v-for="food in foodList" :foodData="food" :key="food.name" />
+    </div>
   </div>
 </template>
 
 
 <script>
-
 import food from "../components/Food";
 
 export default {
-  name: 'foodList',
-  data(){
-    return {food:{query: ""} }
+  name: "foodList",
+  data() {
+    return { food: { query: "" } };
   },
 
-  mounted() {
-    
-  },
+  mounted() {},
 
-  computed:{
+  computed: {
     foodList() {
-      return this.$store.state.foods
-    }
+      return this.$store.state.foods;
+    },
   },
 
-  methods:{
+  methods: {
     getFood() {
-      this.$store.dispatch("getNutrients", this.food)
-    }
+      this.$store.dispatch("getNutrients", this.food);
+    },
   },
 
-  components:{
-    food
-  }
-}
+  components: {
+    food,
+  },
+};
 </script>
 
 
 <style scoped>
-
 </style>
